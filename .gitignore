@@ -1,0 +1,75 @@
+# .NET Core specific
+bin/
+obj/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio specific
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider specific
+.idea/
+.idea_modules/
+.idea/*
+
+# ASP.NET Core
+wwwroot/lib/
+wwwroot/node_modules/
+wwwroot/dist/
+
+# User-specific files
+*.rsuser
+*.resharper
+*.userprefs
+*.sln.ide
+
+# Logs
+*.log
+
+# Environment Variables
+.env
+.env.*
+
+# Application Insights
+ApplicationInsights.config
+ApplicationInsightsTelemetry.config
+
+# Package managers
+node_modules/
+jspm_packages/
+bower_components/
+
+# Docker
+*.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+docker-compose*.yaml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.swp
+*.tmp
+*.temp
+*.log
+
+# Dependency manager files
+global.json
+.nuget/
+
+# Azure Pipelines
+/.azure-pipelines/
+.terraform.lock.hcl
+
+# JetBrains Rider and Resharper files
+_ReSharper*/
