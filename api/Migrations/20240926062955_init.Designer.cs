@@ -12,7 +12,7 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240926061824_init")]
+    [Migration("20240926062955_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -41,9 +41,6 @@ namespace api.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("StockId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StokId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")

@@ -15,7 +15,7 @@ namespace api.Models
 
         public DateTime CreatedOn { get; set; } = DateTime.Now;
 
-        public int? StokId { get; set; } // navigation property
+        public int? StockId { get; set; } // navigation property
 
         public Stock? Stock { get; set; }
     }

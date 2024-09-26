@@ -38,7 +38,6 @@ namespace api.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    StokId = table.Column<int>(type: "int", nullable: true),
                     StockId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

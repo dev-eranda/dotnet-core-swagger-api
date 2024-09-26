@@ -40,9 +40,6 @@ namespace api.Migrations
                     b.Property<int?>("StockId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StokId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
