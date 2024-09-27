@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using api.Data;
+using api.Dtos.Stock;
+using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controller
 {
-    [Route("api/stock")]
+    [Route("api/stocks")]
     [ApiController]
     public class StockController : ControllerBase
     {
@@ -19,23 +17,52 @@ namespace api.Controller
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAllStocks()
         {
-            var stocks = _context.Stocks.ToList();
+            var stocks = _context.Stocks.ToList()
+            .Select(s => s.ToStockDto());
 
             return Ok(stocks);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] int id)
+        public IActionResult GetStockById([FromRoute] int id)
         {
-            var stocks = _context.Stocks.Find(id);
+            var stock = _context.Stocks.Find(id);
 
-            if (stocks == null)
+            if (stock == null)
             {
                 return NotFound();
             }
-            return Ok(stocks);
+
+            return Ok(stock.ToStockDto());
+        }
+
+        [HttpPost]
+        public IActionResult CreateStock([FromBody] StockCreateRequestDto stockCreateDto)
+        {
+            var stock = stockCreateDto.ToStock();
+            _context.Stocks.Add(stock);
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(GetStockById), new { id = stock.Id }, stock.ToStockDto());
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        public IActionResult UpdateStock([FromRoute] int id, [FromBody] StockUpdateRequestDto stockUpdateDto)
+        {
+            var stock = _context.Stocks.FirstOrDefault(x => x.Id == id);
+
+            if (stock == null)
+            {
+                return NotFound();
+            }
+
+            stock.UpdateFromDto(stockUpdateDto);
+            _context.SaveChanges();
+
+            return Ok(stock.ToStockDto());
         }
     }
 }
