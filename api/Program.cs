@@ -1,14 +1,18 @@
 using api.Data;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configure the DbContext with SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -23,10 +27,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.Urls.Add("http://0.0.0.0:80");
+// Configure the URLs to listen on
+app.Urls.Add("http://localhost:5000");
 
+// Enable HTTPS redirection
 app.UseHttpsRedirection();
 
+// Map controller routes
 app.MapControllers();
 
+// Run the application
 app.Run();
