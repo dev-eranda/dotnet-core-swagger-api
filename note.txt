@@ -1,3 +1,3 @@
-docker build -t aspnet-api-server .
+docker build -t dotnet-api-server .
 
-docker run --name aspnet-api-server-container -p 5000:80 aspnet-api-server
+docker run --name aspnet-api-server-container -p 5000:80 dotnet-api-server
