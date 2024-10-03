@@ -1,9 +1,5 @@
 using api.Data;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +24,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // Configure the URLs to listen on
-app.Urls.Add("http://localhost:5000");
+app.Urls.Add("http://0.0.0.0:5000");
 
 // Enable HTTPS redirection
 app.UseHttpsRedirection();
