@@ -47,7 +47,7 @@ bower_components/
 
 # Docker
 *.dockerignore
-Dockerfile
+# Dockerfile
 docker-compose.yml
 docker-compose.override.yml
 docker-compose*.yaml
