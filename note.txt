@@ -8,3 +8,4 @@ docker run --name aspnet-api-server-container -p 8081:5000 --rm -v ${PWD}:/app/d
 
 "DefaultConnection": "Data Source=DESKTOP-5D1THEM\\SQLEXPRESS;Initial Catalog=finshark;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
 
+<EnableSdkContainerSupport>true</EnableSdkContainerSupport>

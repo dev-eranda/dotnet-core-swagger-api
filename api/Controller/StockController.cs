@@ -1,6 +1,7 @@
 using api.Data;
 using api.Dtos.Stock;
 using api.Mappers;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controller
