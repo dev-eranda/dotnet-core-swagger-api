@@ -36,17 +36,17 @@ namespace api.Mappers
             };
         }
 
-        public static void UpdateFromDto(this Stock stockModel, StockUpdateRequestDto stockUpdateDto)
-        {
-            // if (stockModel == null) throw new ArgumentNullException(nameof(stockModel));
-            // if (stockUpdateDto == null) throw new ArgumentNullException(nameof(stockUpdateDto));
+        // public static void UpdateFromDto(this Stock stockModel, StockUpdateRequestDto stockUpdateDto)
+        // {
+        //     // if (stockModel == null) throw new ArgumentNullException(nameof(stockModel));
+        //     // if (stockUpdateDto == null) throw new ArgumentNullException(nameof(stockUpdateDto));
 
-            stockModel.Symbol = stockUpdateDto.Symbol;
-            stockModel.CompanyName = stockUpdateDto.CompanyName;
-            stockModel.Purchase = stockUpdateDto.Purchase;
-            stockModel.LastDiv = stockUpdateDto.LastDiv;
-            stockModel.Industry = stockUpdateDto.Industry;
-            stockModel.MarketCap = stockUpdateDto.MarketCap;
-        }
+        //     stockModel.Symbol = stockUpdateDto.Symbol;
+        //     stockModel.CompanyName = stockUpdateDto.CompanyName;
+        //     stockModel.Purchase = stockUpdateDto.Purchase;
+        //     stockModel.LastDiv = stockUpdateDto.LastDiv;
+        //     stockModel.Industry = stockUpdateDto.Industry;
+        //     stockModel.MarketCap = stockUpdateDto.MarketCap;
+        // }
     }
 }

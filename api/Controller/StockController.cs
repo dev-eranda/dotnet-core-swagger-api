@@ -35,7 +35,7 @@ namespace api.Controller
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStockById([FromRoute] int id)
         {
-            var stock = await _context.Stocks.FindAsync(id);
+            var stock = await _stockRepo.GetStockByIdAsync(id);
 
             if (stock == null)
             {
@@ -49,8 +49,7 @@ namespace api.Controller
         public async Task<IActionResult> CreateStock([FromBody] StockCreateRequestDto stockCreateDto)
         {
             var stock = stockCreateDto.ToStock();
-            await _context.Stocks.AddAsync(stock);
-            await _context.SaveChangesAsync();
+            await _stockRepo.CreateStockAsync(stock);
 
             return CreatedAtAction(nameof(GetStockById), new { id = stock.Id }, stock.ToStockDto());
         }
@@ -59,15 +58,12 @@ namespace api.Controller
         [Route("{id}")]
         public async Task<IActionResult> UpdateStock([FromRoute] int id, [FromBody] StockUpdateRequestDto stockUpdateDto)
         {
-            var stock = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
+            var stock = await _stockRepo.UpdateStockAsync(id, stockUpdateDto);
 
             if (stock == null)
             {
                 return NotFound();
             }
-
-            stock.UpdateFromDto(stockUpdateDto);
-            await _context.SaveChangesAsync();
 
             return Ok(stock.ToStockDto());
         }
@@ -76,17 +72,12 @@ namespace api.Controller
         [Route("{id}")]
         public async Task<IActionResult> DeleteStockById([FromRoute] int id)
         {
-            var stock = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
+            var stock = await _stockRepo.DeleteStockByIdAsync(id);
 
             if (stock == null)
             {
                 return NotFound();
             }
-
-            // delete is not asyn function
-            _context.Stocks.Remove(stock);
-
-            await _context.SaveChangesAsync();
 
             return NoContent();
         }
