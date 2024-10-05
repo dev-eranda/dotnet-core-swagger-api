@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using api.Data;
@@ -33,13 +31,13 @@ namespace api.Repository
         {
             await _context.Stocks.AddAsync(stock);
             await _context.SaveChangesAsync();
+
             return stock;
         }
 
         public async Task<Stock?> UpdateStockAsync(int id, StockUpdateRequestDto stockUpdateDto)
         {
             var stock = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
-
             if (stock == null)
             {
                 return null;
@@ -51,7 +49,6 @@ namespace api.Repository
             stock.LastDiv = stockUpdateDto.LastDiv;
             stock.Industry = stockUpdateDto.Industry;
             stock.MarketCap = stockUpdateDto.MarketCap;
-
             await _context.SaveChangesAsync();
 
             return stock;
@@ -60,7 +57,6 @@ namespace api.Repository
         public async Task<Stock?> DeleteStockByIdAsync(int id)
         {
             var stock = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
-
             if (stock == null)
             {
                 return null;
@@ -68,7 +64,6 @@ namespace api.Repository
 
             // delete is not asyn function
             _context.Stocks.Remove(stock);
-
             await _context.SaveChangesAsync();
 
             return stock;

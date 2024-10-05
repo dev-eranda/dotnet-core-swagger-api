@@ -1,8 +1,6 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using api.Data;
 using api.Dtos.Stock;
 using api.Mappers;
 using api.interfaces;
@@ -13,20 +11,17 @@ namespace api.Controller
     [ApiController]
     public class StockController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
         private readonly IStockRepository _stockRepo;
 
-        public StockController(ApplicationDbContext context, IStockRepository stockRepo)
+        public StockController(IStockRepository stockRepo)
         {
             _stockRepo = stockRepo;
-            _context = context;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllStocks()
         {
             var stocks = await _stockRepo.GetAllStocksAsync();
-
             var stockDto = stocks.Select(s => s.ToStockDto());
 
             return Ok(stockDto);
@@ -36,7 +31,6 @@ namespace api.Controller
         public async Task<IActionResult> GetStockById([FromRoute] int id)
         {
             var stock = await _stockRepo.GetStockByIdAsync(id);
-
             if (stock == null)
             {
                 return NotFound();
@@ -59,7 +53,6 @@ namespace api.Controller
         public async Task<IActionResult> UpdateStock([FromRoute] int id, [FromBody] StockUpdateRequestDto stockUpdateDto)
         {
             var stock = await _stockRepo.UpdateStockAsync(id, stockUpdateDto);
-
             if (stock == null)
             {
                 return NotFound();
@@ -73,7 +66,6 @@ namespace api.Controller
         public async Task<IActionResult> DeleteStockById([FromRoute] int id)
         {
             var stock = await _stockRepo.DeleteStockByIdAsync(id);
-
             if (stock == null)
             {
                 return NotFound();

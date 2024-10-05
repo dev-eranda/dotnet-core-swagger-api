@@ -1,3 +1,4 @@
+using System;
 using api.Dtos.Stock;
 using api.Models;
 
@@ -7,7 +8,7 @@ namespace api.Mappers
     {
         public static StockResponseDto ToStockDto(this Stock stockModel)
         {
-            // if (stockModel == null) throw new ArgumentNullException(nameof(stockModel));
+            if (stockModel == null) throw new ArgumentNullException(nameof(stockModel));
 
             return new StockResponseDto
             {
@@ -23,7 +24,7 @@ namespace api.Mappers
 
         public static Stock ToStock(this StockCreateRequestDto stockCreateDto)
         {
-            // if (stockCreateDto == null) throw new ArgumentNullException(nameof(stockCreateDto));
+            if (stockCreateDto == null) throw new ArgumentNullException(nameof(stockCreateDto));
 
             return new Stock
             {
