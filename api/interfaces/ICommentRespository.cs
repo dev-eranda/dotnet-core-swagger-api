@@ -7,5 +7,7 @@ namespace api.interfaces
     public interface ICommentRespository
     {
         Task<List<Comment>> GetAllCommentAsync();
+
+        Task<Comment?> GetCommentByIdAsync(int id);
     }
 }

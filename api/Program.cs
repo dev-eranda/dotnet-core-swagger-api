@@ -6,12 +6,17 @@ using Microsoft.Extensions.Configuration;
 using api.Data;
 using api.interfaces;
 using api.Repository;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers().AddNewtonsoftJson(options => {
+    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+});
 
 // Configure the DbContext with SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

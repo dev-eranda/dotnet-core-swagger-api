@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using api.Dtos.comment;
+
 namespace api.Dtos.Stock
 {
     public class StockResponseDto
@@ -16,6 +19,6 @@ namespace api.Dtos.Stock
 
         public long MarketCap { get; set; }
 
-        // public List<Comment> Comments { get; set; } = new List<Comment>();
+        public List<CommentResponseDto> Comments { get; set; }
     }
 }
