@@ -1,6 +1,6 @@
 namespace api.Dtos.comment
 {
-    public class CommentCreateRequestDto
+    public class CommentUpdateRequestDto
     {
         public string Title { get; set; } = string.Empty;
 

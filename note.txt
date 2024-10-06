@@ -2,10 +2,6 @@ docker build -t dotnet-api-server:v1 .
 
 docker run --name aspnet-api-server-container -p 8081:5000 --rm dotnet-api-server:v1
 
-docker run --name aspnet-api-server-container -p 8081:5000 --rm -v ${PWD}:/app/data dotnet-api-server:v1
-
-docker run --name aspnet-api-server-container -p 8081:5000 --rm -v ${PWD}:/app/data -e DOTNET_USE_POLLING_FILE_WATCHER=1 dotnet-api-server:v1
-
 "DefaultConnection": "Data Source=DESKTOP-5D1THEM\\SQLEXPRESS;Initial Catalog=finshark;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
 
 <EnableSdkContainerSupport>true</EnableSdkContainerSupport>
