@@ -7,6 +7,7 @@ using api.Models;
 using api.Dtos.Stock;
 using api.Helpers;
 using System.Linq;
+using System;
 
 namespace api.Repository
 {
@@ -31,6 +32,14 @@ namespace api.Repository
             if (!string.IsNullOrWhiteSpace(query.Symbol))
             {
                 stocks = stocks.Where(stock => stock.Symbol.Contains(query.Symbol));
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                if (query.SortBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.isDesending ? stocks.OrderByDescending(stock => stock.Symbol) : stocks.OrderBy(stock => stock.Symbol);
+                }
             }
 
             return await stocks.ToListAsync();
