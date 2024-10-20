@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using api.Dtos.Account;
 using api.interfaces;
 using api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Controller
 {
@@ -14,13 +15,40 @@ namespace api.Controller
     public class AccountController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
-
         private readonly ITokenService _tokenService;
+        private readonly SignInManager<AppUser> _signinManager;
 
-        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService)
+        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signinManager)
         {
             _userManager = userManager;
             _tokenService = tokenService;
+            _signinManager = signinManager;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var user = await _userManager.Users.FirstOrDefaultAsync(user => user.UserName == loginDto.Username.ToLower());
+
+            if (user == null)
+                return Unauthorized("Invalid Credentials!");
+
+            var result = await _signinManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+            if (!result.Succeeded)
+                return Unauthorized("Invalid Credentials!");
+
+            return Ok(
+                new NewUserDto
+                {
+                    UserName = user.UserName!,
+                    Email = user.Email!,
+                    Token = _tokenService.CreateToken(user),
+                }
+            );
+
         }
 
         [HttpPost("register")]

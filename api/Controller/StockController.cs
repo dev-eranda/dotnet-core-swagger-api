@@ -5,6 +5,7 @@ using api.Dtos.Stock;
 using api.Mappers;
 using api.interfaces;
 using api.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controller
 {
@@ -20,6 +21,7 @@ namespace api.Controller
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllStocks([FromQuery] QueryObject query)
         {
             var stocks = await _stockRepo.GetAllStocksAsync(query);
