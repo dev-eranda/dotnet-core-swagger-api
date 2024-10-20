@@ -31,6 +31,18 @@ namespace api.Controller
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
+                var existingUserByUsername = await _userManager.FindByNameAsync(registerDto.Username);
+                if (existingUserByUsername != null)
+                {
+                    return BadRequest(new { Code = "DuplicateUserName", Description = $"Username '{registerDto.Username}' is already taken." });
+                }
+
+                var existingUserByEmail = await _userManager.FindByEmailAsync(registerDto.Email);
+                if (existingUserByEmail != null)
+                {
+                    return BadRequest(new { Code = "DuplicateEmail", Description = $"Email '{registerDto.Email}' is already in use." });
+                }
+
                 var appUser = new AppUser
                 {
                     UserName = registerDto.Username,
