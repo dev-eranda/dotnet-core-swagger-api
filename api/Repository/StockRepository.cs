@@ -24,9 +24,9 @@ namespace api.Repository
         {
             var stocks = _context.Stocks.Include(stock => stock.Comments).AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(query.ComapnyName))
+            if (!string.IsNullOrWhiteSpace(query.CompanyName))
             {
-                stocks = stocks.Where(stock => stock.CompanyName.Contains(query.ComapnyName));
+                stocks = stocks.Where(stock => stock.CompanyName.Contains(query.CompanyName));
             }
 
             if (!string.IsNullOrWhiteSpace(query.Symbol))
