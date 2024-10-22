@@ -5,6 +5,7 @@ using api.Data;
 using api.interfaces;
 using api.Models;
 using api.Dtos.comment;
+using System;
 
 namespace api.Repository
 {
@@ -37,7 +38,7 @@ namespace api.Repository
 
         public async Task<Comment?> UpdateCommentAsync(int id, CommentUpdateRequestDto commentDto)
         {
-            var comment = await _context.Comments.FirstOrDefaultAsync(comment => comment.Id == id);
+            var comment = await _context.Comments.Include(a => a.AppUser).FirstOrDefaultAsync(comment => comment.Id == id);
             if (comment == null)
             {
                 return null;
