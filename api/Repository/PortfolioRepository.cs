@@ -38,5 +38,20 @@ namespace api.Repository
 
             return portfolio;
         }
+
+        public async Task<bool> DeletePortfolio(AppUser user, string symbol)
+        {
+            var portfolioModel = await _context.Portfolios.FirstOrDefaultAsync(p => p.AppUserId == user.Id && p.Stock.Symbol.ToLower() == symbol.ToLower());
+
+            if (portfolioModel == null)
+            {
+                return false;
+            }
+
+            _context.Portfolios.Remove(portfolioModel);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
     }
 }
