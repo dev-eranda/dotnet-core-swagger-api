@@ -39,17 +39,20 @@ namespace api.Mappers
             };
         }
 
-        // public static void UpdateFromDto(this Stock stockModel, StockUpdateRequestDto stockUpdateDto)
-        // {
-        //     // if (stockModel == null) throw new ArgumentNullException(nameof(stockModel));
-        //     // if (stockUpdateDto == null) throw new ArgumentNullException(nameof(stockUpdateDto));
+        public static Stock ToFMPStock(this FMPStock fmpStock)
+        {
+            if (fmpStock == null) throw new ArgumentNullException(nameof(fmpStock));
 
-        //     stockModel.Symbol = stockUpdateDto.Symbol;
-        //     stockModel.CompanyName = stockUpdateDto.CompanyName;
-        //     stockModel.Purchase = stockUpdateDto.Purchase;
-        //     stockModel.LastDiv = stockUpdateDto.LastDiv;
-        //     stockModel.Industry = stockUpdateDto.Industry;
-        //     stockModel.MarketCap = stockUpdateDto.MarketCap;
-        // }
+            return new Stock
+            {
+                Symbol = fmpStock.symbol,
+                CompanyName = fmpStock.companyName,
+                Purchase = (decimal)fmpStock.price,
+                LastDiv = (decimal)fmpStock.lastDiv,
+                Industry = fmpStock.industry,
+                MarketCap = fmpStock.mktCap,
+            };
+        }
+
     }
 }
