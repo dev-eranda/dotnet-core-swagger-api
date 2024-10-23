@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using api.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using api.Models;
 
 namespace api.Data
 {

@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System;
 using api.Data;
 using api.interfaces;
 using api.Models;
 using api.Dtos.Stock;
 using api.Helpers;
-using System.Linq;
-using System;
 
 namespace api.Repository
 {

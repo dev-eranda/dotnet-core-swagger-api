@@ -1,12 +1,12 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using api.Dtos.Stock;
 using api.interfaces;
 using api.Mappers;
 using api.Models;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 
 namespace api.Services
 {

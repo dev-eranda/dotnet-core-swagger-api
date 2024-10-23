@@ -1,11 +1,11 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using api.Dtos.Stock;
 using api.Mappers;
 using api.interfaces;
 using api.Helpers;
-using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controller
 {

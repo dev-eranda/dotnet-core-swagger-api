@@ -1,13 +1,13 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using api.interfaces;
 using api.Mappers;
 using api.Dtos.comment;
-using Microsoft.AspNetCore.Identity;
 using api.Models;
 using api.Extensions;
-using Microsoft.AspNetCore.Authorization;
 using api.Helpers;
 
 namespace api.Controller
