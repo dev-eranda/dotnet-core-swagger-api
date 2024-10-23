@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using api.Models;
 using api.Extensions;
 using Microsoft.AspNetCore.Authorization;
+using api.Helpers;
 
 namespace api.Controller
 {
@@ -29,9 +30,9 @@ namespace api.Controller
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllComments()
+        public async Task<IActionResult> GetAllComments([FromQuery] CommentQueryObject queryObject)
         {
-            var comments = await _commentRepo.GetAllCommentAsync();
+            var comments = await _commentRepo.GetAllCommentAsync(queryObject);
             var commentDto = comments.Select(c => c.ToCommentDto());
 
             return Ok(commentDto);

@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using api.Dtos.comment;
+using api.Helpers;
 using api.Models;
 
 namespace api.interfaces
 {
     public interface ICommentRespository
     {
-        Task<List<Comment>> GetAllCommentAsync();
+        Task<List<Comment>> GetAllCommentAsync(CommentQueryObject query);
 
         Task<Comment?> GetCommentByIdAsync(int id);
 

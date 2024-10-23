@@ -26,11 +26,13 @@ namespace api.Repository
 
             if (!string.IsNullOrWhiteSpace(query.CompanyName))
             {
+                // matches any symbol that includes the string
                 stocks = stocks.Where(stock => stock.CompanyName.Contains(query.CompanyName));
             }
 
             if (!string.IsNullOrWhiteSpace(query.Symbol))
             {
+                // matches any symbol that includes the string
                 stocks = stocks.Where(stock => stock.Symbol.Contains(query.Symbol));
             }
 
