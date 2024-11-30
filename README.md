@@ -18,8 +18,14 @@ The main objectives of this application are to:
 6. Developed essential features like user management and CRUD operations for resource handling.
 <hr />
 
-### Technologies Used
-- C#, ASP.NET core, Swagger UI, JWT Authentication, SQL Server
+## Technical Details
+Core technologies used: 
+
+- **ASP.NET core:** A cross-platform framework for high-performance web applications.
+- **C#:** Used with ASP.NET Core for building web applications.
+- **JWT:** Implementing secure authentication and authorization mechanisms.
+- **SQL Server:** For Database management and data manipulation.
+- **Swagger UI:** For Interactive tool for testing and documenting APIs.
 <hr />
 
 ## Installation
