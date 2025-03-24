@@ -26,7 +26,7 @@ Core technologies used:
 ## Installation
 1. Clone repository:
    ```sh
-   git clone https://github.com/dev-eranda/dotnet-core-swagger-api
+   git clone https://github.com/dev-eranda/dotnet-core-swagger-api.git
    
 2. Start development server:
    ```sh
