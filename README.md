@@ -1,10 +1,10 @@
 
 # .NET Core Swagger API
 
-**Developed By:** Eranda Samarasinghe
+**Developed by:** Eranda Samarasinghe
 <hr />
 
-## Project Backgroud and Overview
+## Project Background and Overview
 This repository contains a Web API built using C# and ASP.NET Core. It utilizes Swagger for interactive API documentation and testing. This project demonstrates best practices in RESTful API design, including JWT authentication, data validation, and standardized response formatting. Key features include user management and CRUD operations
 <hr />
 
@@ -20,7 +20,7 @@ The main objectives of this application are to:
 ## Technical Details
 Core technologies used: 
 
-- **.NET Core, C#, JWT Authentication, SQL Server, Swagger UI**
+- **.NET Core, C#, JWT Authentication, SQL Server, Swagger**
 <hr />
 
 ## Installation
